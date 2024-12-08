@@ -1,0 +1,20 @@
+
+$primary: #2E99A5
+$info: #3557A6
+$info: #00b4d8
+$success:#00bc8b
+$danger:#ff371e
+$secondary:#dbdbdb
+$warning:#fda521
+$accent: #aa2ad9
+
+
+
+@import "../../node_modules/bootstrap/scss/_functions"
+@import "../../node_modules/bootstrap/scss/_variables"
+$custom-theme-color: ("accent": $accent )
+
+$theme-colors: map-merge($custom-theme-color,$theme-colors)
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap"
