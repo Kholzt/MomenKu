@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedBigInteger('subscription_level')->default(1); // Default to free level
+            $table->date('subscription_expiry')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
