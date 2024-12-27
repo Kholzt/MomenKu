@@ -6,7 +6,7 @@ const HeroSection = () => {
     return (
         <section className="min-h-screen flex items-center  bg-[--primary-color] text-white">
             <div className=" container  grid md:grid-cols-2 grid-cols-1 px-6">
-                <div className="">
+                <div className="md:text-start text-center">
                     <h1 className="mb-4 text-5xl font-bold ">
                         Buat Undangan Online Anda Sendiri dengan Mudah!
                     </h1>
@@ -15,7 +15,7 @@ const HeroSection = () => {
                         waktu. Buat undangan yang berkesan hanya dengan beberapa
                         klik!
                     </p>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 md:justify-start justify-center">
                         <Button type="link" variant={"secondary"}>
                             <i className="fa fa-plus-circle"></i> Buat Undangan
                         </Button>

@@ -5,6 +5,7 @@ import Layout from "../layouts/Layout";
 import { Head } from "@inertiajs/react";
 import ShortDescriptionSection from "./ShortDescriptionSection";
 import TestimonialSection from "./testimonialSection";
+import FAQ from "./FAQ";
 
 const Landing = ({ data }) => {
     return (
@@ -50,6 +51,24 @@ const Landing = ({ data }) => {
                         message:
                             "Membuat undangan jadi jauh lebih mudah dengan aplikasi ini. Hemat waktu, hemat uang, dan tamu saya juga bilang sangat menarik. Sangat saya rekomendasikan!",
                         name: "Dimas Pratama",
+                    },
+                ]}
+            />
+            <FAQ
+                questions={[
+                    {
+                        question: "Apa itu aplikasi undangan online?",
+                        answer: "Aplikasi undangan online adalah platform digital yang memungkinkan pengguna membuat, mengirim, dan mengelola undangan acara seperti pernikahan, ulang tahun, atau acara lainnya secara online. Undangan ini dapat diakses melalui tautan yang dapat dibagikan melalui media sosial atau pesan instan.",
+                    },
+                    {
+                        question:
+                            "Bagaimana cara membuat undangan di aplikasi ini?",
+                        answer: "Daftar atau login ke akun Anda.Pilih template undangan sesuai acara.Isi detail acara seperti nama, tanggal, lokasi, dan deskripsi. Tambahkan foto atau video jika diperlukan. Simpan dan dapatkan tautan undangan Anda untuk dibagikan.",
+                    },
+                    {
+                        question:
+                            "Apakah undangan online ini bisa dikustomisasi?",
+                        answer: "Ya, undangan dapat dikustomisasi sepenuhnya. Anda dapat mengubah warna, font, desain, menambahkan foto, video, dan detail acara sesuai kebutuhan.",
                     },
                 ]}
             />
