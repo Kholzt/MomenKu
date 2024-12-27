@@ -11,6 +11,18 @@
     --primary-light: #f5f9fe;
     --dark-color: #1e1e1e;
 }
+html {
+    scroll-snap-type: x mandatory;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
 body {
     font-family: "DM Sans", serif;
 }
@@ -18,5 +30,5 @@ section {
     @apply md:py-32 py-28;
 }
 .container {
-    @apply md:max-w-7xl max-w-full mx-auto md:px-0 px-4;
+    @apply md:max-w-7xl max-w-full mx-auto lg:px-0 px-4;
 }

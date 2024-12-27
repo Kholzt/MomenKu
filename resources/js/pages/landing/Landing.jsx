@@ -4,6 +4,7 @@ import ThemeSection from "./ThemeSection";
 import Layout from "../layouts/Layout";
 import { Head } from "@inertiajs/react";
 import ShortDescriptionSection from "./ShortDescriptionSection";
+import TestimonialSection from "./testimonialSection";
 
 const Landing = ({ data }) => {
     return (
@@ -18,6 +19,40 @@ const Landing = ({ data }) => {
             <HeroSection />
             <ShortDescriptionSection />
             <ThemeSection themes={data.themes} />
+            <TestimonialSection
+                testimonials={[
+                    {
+                        message:
+                            "Aplikasi ini sangat membantu saya untuk mengirimkan undangan pernikahan dengan cepat dan hemat biaya. Desainnya juga cantik dan mudah dikustomisasi. Sangat puas dengan hasilnya!",
+                        name: "Andika Pratama",
+                    },
+                    {
+                        message:
+                            "Saya suka sekali dengan tema-tema yang tersedia di aplikasi ini. Undangannya terlihat profesional, dan semua tamu saya kagum dengan tampilannya. Luar biasa!",
+                        name: "Siti Aulia",
+                    },
+                    {
+                        message:
+                            "Membuat undangan jadi jauh lebih mudah dengan aplikasi ini. Hemat waktu, hemat uang, dan tamu saya juga bilang sangat menarik. Sangat saya rekomendasikan!",
+                        name: "Dimas Pratama",
+                    },
+                    {
+                        message:
+                            "Aplikasi ini sangat membantu saya untuk mengirimkan undangan pernikahan dengan cepat dan hemat biaya. Desainnya juga cantik dan mudah dikustomisasi. Sangat puas dengan hasilnya!",
+                        name: "Andika Pratama",
+                    },
+                    {
+                        message:
+                            "Saya suka sekali dengan tema-tema yang tersedia di aplikasi ini. Undangannya terlihat profesional, dan semua tamu saya kagum dengan tampilannya. Luar biasa!",
+                        name: "Siti Aulia",
+                    },
+                    {
+                        message:
+                            "Membuat undangan jadi jauh lebih mudah dengan aplikasi ini. Hemat waktu, hemat uang, dan tamu saya juga bilang sangat menarik. Sangat saya rekomendasikan!",
+                        name: "Dimas Pratama",
+                    },
+                ]}
+            />
         </Layout>
     );
 };

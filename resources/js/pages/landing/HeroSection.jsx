@@ -20,7 +20,7 @@ const HeroSection = () => {
                             <i className="fa fa-plus-circle"></i> Buat Undangan
                         </Button>
                         <Button type="link" variant={"secondary-outline"}>
-                            <i class="fa-regular fa-circle-play text-[--secondary-color]"></i>{" "}
+                            <i className="fa-regular fa-circle-play text-[--secondary-color]"></i>{" "}
                             Tutorial Undangan
                         </Button>
                     </div>
