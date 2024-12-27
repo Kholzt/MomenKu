@@ -13,8 +13,8 @@ const ThemeCard = ({ theme }) => {
             <span
                 className={`px-2 py-1 absolute top-2 right-2 ${
                     theme.price == 0.0
-                        ? " bg-green-200 text-green-800"
-                        : " bg-blue-200 text-blue-800"
+                        ? " bg-[--secondary-color] text-white"
+                        : " bg-[--primary-color] text-white"
                 } rounded-md text-xs`}
             >
                 {theme.price == 0.0 ? "Free" : currencyFormat(theme.price)}

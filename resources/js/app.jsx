@@ -1,25 +1,30 @@
+import "../css/app.css";
 import "./bootstrap";
 
-import Alpine from "alpinejs";
-
-window.Alpine = Alpine;
-
-Alpine.start();
-
 import { createInertiaApp } from "@inertiajs/react";
+import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { createRoot } from "react-dom/client";
-import "../css/app.css";
 import { GlobalProvider } from "./contexts/GlobalContext";
+
+const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+
 createInertiaApp({
-    resolve: (name) => {
-        const pages = import.meta.glob("./pages/**/*.jsx", { eager: true });
-        return pages[`./pages/${name}.jsx`];
-    },
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name) =>
+        resolvePageComponent(
+            `./pages/${name}.jsx`,
+            import.meta.glob("./pages/**/*.jsx")
+        ),
     setup({ el, App, props }) {
-        createRoot(el).render(
+        const root = createRoot(el);
+
+        root.render(
             <GlobalProvider>
                 <App {...props} />
             </GlobalProvider>
         );
+    },
+    progress: {
+        color: "#4B5563",
     },
 });

@@ -1,27 +1,23 @@
 <?php
 
-use App\Http\Controllers\DashboardMemberController;
 use App\Http\Controllers\LandingController;
-use App\Models\Comments;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', [LandingController::class, "index"]);
 Route::get('/themes', [LandingController::class, "themes"]);
-Route::get('/member', [DashboardMemberController::class, "index"]);
+Route::get('/FAQ', action: [LandingController::class, "faq"]);
 
+Route::get('/member/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/comments', function () {
-    $data = Comments::orderBy("id", "Desc")->get();
-    return response($data);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::post('/comments', function () {
-    try {
-        $data = Comments::create(["nama" => request("nama"), "keterangan" => request("keterangan")]);
-        return response($data);
-    } catch (\Throwable $th) {
-        return response(["error" => $th->getMessage()], 200);
-    }
-});
-// Route::get('/{name}', function ($name) {
-//     return view('index');
-// });
+
+require __DIR__ . '/auth.php';

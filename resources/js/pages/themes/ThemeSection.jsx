@@ -3,7 +3,7 @@ import React from "react";
 import ThemeCard from "../../components/ThemeCard";
 import Button from "../../components/Button";
 
-const ThemeSection = ({ themes, type }) => {
+const ThemeSection = ({ themes, type, pagination }) => {
     const filterItems = [
         {
             name: "Semua Tema",
@@ -31,9 +31,9 @@ const ThemeSection = ({ themes, type }) => {
                                             ? "?type=" + item.key
                                             : "/themes"
                                     }`}
-                                    className={`flex flex-col gap-2  text-center py-6 px-6 border-b-4  hover:border-[#023040] hover:text-[#023040] ${
+                                    className={`flex flex-col gap-2  text-center py-6 px-6 border-b-4  hover:border-[--primary-color] hover:text-[--primary-color] ${
                                         type == item.key
-                                            ? "border-[#023040] text-[#023040] "
+                                            ? "border-[--primary-color] text-[--primary-color] "
                                             : "text-slate-400  border-transparent "
                                     }`}
                                     type="link"
@@ -55,6 +55,31 @@ const ThemeSection = ({ themes, type }) => {
                                         <ThemeCard theme={theme} key={i} />
                                     </Link>
                                 </div>
+                            );
+                        })}
+                    </div>
+                    <div className="flex gap-2 mt-6 justify-center">
+                        {pagination.map((paginate, index) => {
+                            return (
+                                <Button
+                                    variant={
+                                        paginate.active ? "primary" : "ghost"
+                                    }
+                                    className={`${
+                                        paginate.url == null
+                                            ? "pointer-events-none"
+                                            : ""
+                                    }`}
+                                    key={index}
+                                    type="link"
+                                    href={paginate.url}
+                                >
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: paginate.label,
+                                        }}
+                                    ></div>
+                                </Button>
                             );
                         })}
                     </div>

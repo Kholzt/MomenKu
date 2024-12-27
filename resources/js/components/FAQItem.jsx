@@ -11,7 +11,7 @@ const FAQItem = ({ question, answer }) => {
                 <h4 className="font-medium text-lg">{question}</h4>
                 <i
                     className={`fa transition-all fa-chevron-down ease-in-out duration-300 ${
-                        open ? "rotate-0" : "rotate-[180deg]"
+                        open ? "rotate-[180deg]" : "rotate-0"
                     }`}
                 ></i>
             </div>

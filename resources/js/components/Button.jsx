@@ -7,7 +7,7 @@ const Button = ({
     children,
     ...props
 }) => {
-    let buttonClass = "px-4  text-center text-sm py-3 rounded-lg  ";
+    let buttonClass = "px-4  text-center text-sm py-3 rounded-md  ";
     buttonClass += getVariant(variant);
 
     if (type === "link") {

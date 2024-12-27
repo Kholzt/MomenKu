@@ -16,7 +16,11 @@ const HeroSection = () => {
                         klik!
                     </p>
                     <div className="flex gap-2 md:justify-start justify-center">
-                        <Button type="link" variant={"secondary"}>
+                        <Button
+                            type="link"
+                            href={"/register"}
+                            variant={"secondary"}
+                        >
                             <i className="fa fa-plus-circle"></i> Buat Undangan
                         </Button>
                         <Button type="link" variant={"secondary-outline"}>

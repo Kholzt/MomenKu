@@ -14,6 +14,7 @@ const SearchSection = ({ data }) => {
         e.preventDefault();
         get("");
     };
+
     return (
         <section className="pb-10 bg-[--primary-color]">
             <div className="container">
@@ -23,7 +24,7 @@ const SearchSection = ({ data }) => {
                 </h1>
                 <p className="text-center md:max-w-lg text-white mx-auto">
                     Berikut ini adalah beberapa tema undangan online digital
-                    terbaik yang ada pada MomenKhusus
+                    terbaik yang ada pada MomenKu
                 </p>
                 <form
                     onSubmit={handleSubmit}

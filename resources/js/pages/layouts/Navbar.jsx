@@ -126,7 +126,7 @@ const NavbarWeb = ({ scrolled }) => {
                         </li>
                     </ul>
                 </nav>
-                <Link className="text-sm" href="/">
+                <Link className="text-sm" href="/login">
                     <i className="fa-solid fa-arrow-right-to-bracket me-2"></i>
                     Login
                 </Link>

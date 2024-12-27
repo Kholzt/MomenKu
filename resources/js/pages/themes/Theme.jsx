@@ -17,7 +17,11 @@ const Theme = ({ data }) => {
             </Head>
             <SearchSection data={data} />
 
-            <ThemeSection type={data.type} themes={data.themes.data} />
+            <ThemeSection
+                type={data.type}
+                themes={data.themes.data}
+                pagination={data.themes.links}
+            />
             <Footer />
         </Layout>
     );

@@ -11,13 +11,8 @@ import Footer from "../layouts/Footer";
 const Landing = ({ data }) => {
     return (
         <Layout>
-            <Head>
-                <title>MomenKu</title>
-                <meta
-                    name="description"
-                    content="Undangan digital kami menghadirkan pengalaman tanpa batas: desain cantik, RSVP otomatis, galeri foto, hingga peta lokasi acara. Hanya dalam hitungan menit, bagikan undangan Anda ke keluarga dan teman dengan mudah! "
-                />
-            </Head>
+            <Head title="Beranda" />
+
             <HeroSection />
             <ShortDescriptionSection />
             <ThemeSection themes={data.themes} />

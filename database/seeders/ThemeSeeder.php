@@ -87,7 +87,7 @@ class ThemeSeeder extends Seeder
                 'name' => 'Solar Eclipse',
                 'slug' => Str::slug('Solar Eclipse'),
                 'description' => 'A dramatic theme with deep tones and bright highlights.',
-                'thumbnail' => 'https://demo.datengdong.com/themes/one/thumb.png',
+                'thumbnail' => 'https://demo.datengdong.com/themes/two/thumb.png',
                 "price" => 50000,
                 'created_at' => now(),
                 'updated_at' => now(),
