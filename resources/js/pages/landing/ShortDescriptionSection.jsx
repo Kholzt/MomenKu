@@ -4,7 +4,7 @@ const ShortDescriptionSection = () => {
     return (
         <section>
             <div className="container text-center">
-                <h2 className="font-bold text-3xl mx-auto   mb-4 w-[500px]">
+                <h2 className="font-bold text-3xl mx-auto   mb-4 w-[500px] max-w-full">
                     Semua yang Anda Butuhkan untuk Undangan{" "}
                     <span className="text-[--primary-color]">Digital</span> yang
                     Sempurna
