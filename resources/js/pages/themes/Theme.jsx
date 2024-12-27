@@ -8,7 +8,7 @@ const Theme = ({ data }) => {
     return (
         <Layout>
             <Head>
-                <title>MomenKhusus | Tema</title>
+                <title>MomenKu | Tema</title>
                 <meta
                     name="description"
                     content="Undangan digital kami menghadirkan pengalaman tanpa batas: desain cantik, RSVP otomatis, galeri foto, hingga peta lokasi acara. Hanya dalam hitungan menit, bagikan undangan Anda ke keluarga dan teman dengan mudah! "

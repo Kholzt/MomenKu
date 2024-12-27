@@ -9,7 +9,7 @@ const Landing = ({ data }) => {
     return (
         <Layout>
             <Head>
-                <title>MomenKhusus</title>
+                <title>MomenKu</title>
                 <meta
                     name="description"
                     content="Undangan digital kami menghadirkan pengalaman tanpa batas: desain cantik, RSVP otomatis, galeri foto, hingga peta lokasi acara. Hanya dalam hitungan menit, bagikan undangan Anda ke keluarga dan teman dengan mudah! "
