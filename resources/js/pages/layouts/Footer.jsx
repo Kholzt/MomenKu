@@ -41,7 +41,7 @@ const Footer = () => {
                                 <li>
                                     <Link
                                         className="text-md text-slate-200 hover:text-white"
-                                        href="/themes"
+                                        href="/portofolio"
                                     >
                                         Portofolio
                                     </Link>
@@ -49,7 +49,7 @@ const Footer = () => {
                                 <li>
                                     <Link
                                         className="text-md text-slate-200 hover:text-white"
-                                        href="/themes"
+                                        href="/FAQ"
                                     >
                                         FAQ
                                     </Link>

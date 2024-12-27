@@ -1,0 +1,1 @@
+import{u as o,j as a}from"./app-Djwpon8n.js";const r=()=>{const s=o(),t=()=>{s.toggleNavbar(!s.isNavbarOpen)};return a.jsx("nav",{className:"bg-white shadow-sm w-full px-4 py-4",children:a.jsx("button",{onClick:t,children:a.jsx("i",{className:"fa fa-bars"})})})};export{r as default};

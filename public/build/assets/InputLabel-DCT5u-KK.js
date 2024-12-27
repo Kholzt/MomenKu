@@ -1,1 +1,0 @@
-import{j as m}from"./app-DQvbQm-W.js";function o({value:t,className:e="",children:r,...s}){return m.jsx("label",{...s,className:"block text-sm font-medium text-gray-800  "+e,children:t||r})}export{o as I};
