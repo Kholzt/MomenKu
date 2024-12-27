@@ -26,7 +26,8 @@ html {
 body {
     font-family: "DM Sans", serif;
 }
-section {
+section,
+footer {
     @apply md:py-32 py-28;
 }
 .container {

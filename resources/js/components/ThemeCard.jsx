@@ -4,9 +4,9 @@ import { currencyFormat } from "../helpers/helpers";
 
 const ThemeCard = ({ theme }) => {
     return (
-        <article className="relative flex overflow-hidden flex-col h-full rounded-xl bg-white">
+        <article className="relative flex overflow-hidden flex-col h-full w-full rounded-xl bg-white">
             <img
-                src={"assets/image/example.png"}
+                src={theme.thumbnail}
                 alt=""
                 className="w-full aspect-[382/290]	 object-cover	"
             />
@@ -20,7 +20,7 @@ const ThemeCard = ({ theme }) => {
                 {theme.price == 0.0 ? "Free" : currencyFormat(theme.price)}
             </span>
             <div className="md:p-6 p-4">
-                <h3 className="text-md font-medium mb-1  group-hover:underline">
+                <h3 className="text-md  text-black font-medium mb-1  group-hover:underline">
                     {theme.name}
                 </h3>
                 <p className="text-sm text-slate-600">{theme.description}</p>

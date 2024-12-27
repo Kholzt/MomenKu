@@ -6,6 +6,7 @@ import { Head } from "@inertiajs/react";
 import ShortDescriptionSection from "./ShortDescriptionSection";
 import TestimonialSection from "./testimonialSection";
 import FAQ from "./FAQ";
+import Footer from "../layouts/Footer";
 
 const Landing = ({ data }) => {
     return (
@@ -72,6 +73,7 @@ const Landing = ({ data }) => {
                     },
                 ]}
             />
+            <Footer />
         </Layout>
     );
 };

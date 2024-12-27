@@ -1,12 +1,12 @@
-import { Link } from "@inertiajs/react";
 import React from "react";
 import Button from "../../components/Button";
+import SliderHeroSection from "./SliderHeroSection";
 
 const HeroSection = () => {
     return (
-        <section className="min-h-screen flex items-center  bg-[--primary-color] text-white">
-            <div className=" container  grid md:grid-cols-2 grid-cols-1 px-6">
-                <div className="md:text-start text-center">
+        <section className="min-h-screen flex items-center bg-[--primary-color] text-white">
+            <div className="container grid md:grid-cols-2 grid-cols-1 md:gap-10 gap-5 px-6">
+                <div className="md:text-start text-center md:order-1 order-2">
                     <h1 className="mb-4 text-5xl font-bold ">
                         Buat Undangan Online Anda Sendiri dengan Mudah!
                     </h1>
@@ -24,6 +24,10 @@ const HeroSection = () => {
                             Tutorial Undangan
                         </Button>
                     </div>
+                </div>
+                <div className="relative flex justify-center mt-4 md:mt-0 md:order-2 order-1">
+                    {/* Wrapper untuk menumpuk card */}
+                    <SliderHeroSection />
                 </div>
             </div>
         </section>

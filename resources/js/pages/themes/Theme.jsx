@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout";
 import ThemeSection from "./ThemeSection";
 import { Head, useForm } from "@inertiajs/react";
 import SearchSection from "./SearchSection";
+import Footer from "../layouts/Footer";
 
 const Theme = ({ data }) => {
     return (
@@ -17,6 +18,7 @@ const Theme = ({ data }) => {
             <SearchSection data={data} />
 
             <ThemeSection type={data.type} themes={data.themes.data} />
+            <Footer />
         </Layout>
     );
 };
