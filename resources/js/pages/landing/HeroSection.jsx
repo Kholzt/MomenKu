@@ -29,7 +29,7 @@ const HeroSection = () => {
                         </Button>
                     </div>
                 </div>
-                <div className="relative flex justify-center mt-4 md:mt-0 md:order-2 order-1">
+                <div className="relative flex justify-center mt-14 md:mt-0 md:order-2 order-1">
                     {/* Wrapper untuk menumpuk card */}
                     <SliderHeroSection />
                 </div>
