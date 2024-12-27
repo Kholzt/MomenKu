@@ -63,12 +63,12 @@ const NavbarMobile = ({ scrolled, active, setActive }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" href="/themes">
+                            <Link className="text-sm" href="/portofolio">
                                 Portofolio
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" href="/themes">
+                            <Link className="text-sm" href="/FAQ">
                                 FAQ
                             </Link>
                         </li>
@@ -76,7 +76,7 @@ const NavbarMobile = ({ scrolled, active, setActive }) => {
                             <Button
                                 type="link"
                                 className="text-sm w-full block"
-                                href="/"
+                                href="/login"
                             >
                                 <i className="fa-solid fa-arrow-right-to-bracket me-2"></i>
                                 Login
@@ -115,12 +115,12 @@ const NavbarWeb = ({ scrolled }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" href="/themes">
+                            <Link className="text-sm" href="/portofolio">
                                 Portofolio
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" href="/themes">
+                            <Link className="text-sm" href="/FAQ">
                                 FAQ
                             </Link>
                         </li>
