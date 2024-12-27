@@ -34,7 +34,7 @@ const SliderHeroSection = () => {
     }, [themes.length]);
 
     return (
-        <div className="relative w-full md:h-auto h-80">
+        <div className="relative w-full md:h-auto h-60">
             <div className="relative flex w-full">
                 {themes.map((theme, index) => (
                     <div
