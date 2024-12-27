@@ -11,10 +11,9 @@ const Footer = () => {
                             MomenKu
                         </h1>
                         <p className="text-slate-200 text-md">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Reiciendis repudiandae perspiciatis molestiae
-                            debitis deserunt possimus pariatur consequatur sit
-                            laudantium ullam.
+                            Bagikan momen spesial Anda dengan cara modern dan
+                            hemat waktu. Buat undangan yang berkesan hanya
+                            dengan beberapa klik!
                         </p>
                     </div>
                     <div className="flex flex-wrap gap-10">
