@@ -1,0 +1,1 @@
+import{j as s}from"./app-DQvbQm-W.js";import r from"./Sidebar-4GgtsOH4.js";import o from"./NavbarDashboard-DZmWR5H0.js";const l=({children:a})=>s.jsxs("div",{className:"flex w-full ",children:[s.jsx(r,{}),s.jsxs("main",{className:"flex-grow bg-gray-100",children:[s.jsx(o,{}),s.jsx("div",{className:"p-4",children:a})]})]});export{l as default};
