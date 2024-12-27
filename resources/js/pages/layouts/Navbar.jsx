@@ -45,7 +45,7 @@ const NavbarMobile = ({ scrolled, active, setActive }) => {
         >
             <div className="container flex flex-wrap justify-between">
                 <Link className="text-sm" href="/">
-                    Logo
+                    MOMENKU
                 </Link>
                 <button onClick={() => setActive(!active)}>
                     <i className="fa fa-bars"></i>
@@ -100,7 +100,7 @@ const NavbarWeb = ({ scrolled }) => {
         <header className={`${baseClass} ${scrolledClass}`}>
             <div className="container flex justify-between">
                 <Link className="text-sm" href="/">
-                    Logo
+                    MOMENKU
                 </Link>
                 <nav>
                     <ul className="flex gap-10">

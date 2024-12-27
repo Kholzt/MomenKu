@@ -1,1 +1,0 @@
-import{j as r}from"./app-Djwpon8n.js";import o from"./DashboardLayout-DYb3YTsF.js";import"./Sidebar-Bios5yZ8.js";import"./NavbarDashboard-Bby7RDnU.js";const i=()=>r.jsx(o,{children:"Dashboard"});export{i as default};
