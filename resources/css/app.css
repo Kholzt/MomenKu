@@ -1,10 +1,22 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css");
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Great+Vibes&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --primary-color: #0c74dc;
+    --secondary-color: #0fd15d;
+    --primary-light: #f5f9fe;
+    --dark-color: #1e1e1e;
+}
 body {
-    font-family: "Inter", serif;
+    font-family: "DM Sans", serif;
+}
+section {
+    @apply md:py-32 py-28;
+}
+.container {
+    @apply md:max-w-7xl max-w-full mx-auto md:px-0 px-4;
 }

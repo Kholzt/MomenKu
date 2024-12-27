@@ -1,37 +1,46 @@
 import { Link } from "@inertiajs/react";
 import React from "react";
 import ThemeCard from "../../components/ThemeCard";
+import Button from "../../components/Button";
 
 const ThemeSection = ({ themes }) => {
     return (
-        <div className="min-h-screen md:py-10 py-6 bg-slate-50 flex items-center ">
-            <div className="md:max-w-7xl max-w-full mx-auto px-6 ">
-                <div className="text-center">
-                    <h1 className="text-3xl mx-auto  mb-6 w-[500px] max-w-full">
-                        Pilih tema undangan sesuai yang kamu inginkan
+        <section className="min-h-screen  bg-[--primary-light] flex items-center ">
+            <div className="container  px-6 ">
+                <div className="text-center mb-10">
+                    <h1 className="text-3xl mx-auto font-bold  mb-4 w-[500px] max-w-full">
+                        Pilih Tema Undangan Sesuai Keinginan Anda
                     </h1>
+                    <p className=" w-[894px] mx-auto max-w-full">
+                        Dari desain klasik hingga modern, temukan tema yang
+                        paling cocok untuk momen istimewa Anda. Semua tema dapat
+                        disesuaikan untuk mencerminkan kepribadian dan cerita
+                        cinta Anda.
+                    </p>
                 </div>
                 <div className="">
-                    <div className="grid md:grid-cols-4  grid-cols-1 ">
+                    <div className="flex justify-between mb-4">
+                        <h3 className="text-lg font-bold">
+                            Tema Undangan Populer
+                        </h3>
+                        <Link href="/themes">
+                            Lihat Semua <i className="fa fa-chevron-right"></i>
+                        </Link>
+                    </div>
+                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-6  grid-cols-1 ">
                         {themes.map((theme, i) => {
                             return (
-                                <div key={i} className="md:p-7 p-3">
-                                    <ThemeCard theme={theme} key={i} />
+                                <div key={i}>
+                                    <Link href={`/themes/${theme.slug}`}>
+                                        <ThemeCard theme={theme} key={i} />
+                                    </Link>
                                 </div>
                             );
                         })}
                     </div>
-                    <div className="flex justify-center mt-6">
-                        <Link
-                            href="/themes"
-                            className="px-4 md:w-auto w-full text-center text-sm py-3 rounded-lg text-white bg-blue-400"
-                        >
-                            Selengkapnya <i className="fa fa-arrow-right"></i>
-                        </Link>
-                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

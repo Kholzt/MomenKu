@@ -9,58 +9,66 @@ return new class extends Migration
 
     public function up(): void
     {
-        // Users table
 
 
-        // Subscription levels table
-        Schema::create('subscription_levels', function (Blueprint $table) {
+        Schema::create('themes', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Free, Premium, Pro, etc.
-            $table->decimal('price', 8, 2)->default(0); // Price per month/year
-            $table->json('features'); // Store features in JSON format
-            $table->tinyInteger('level')->default(1); // Store features in JSON format
+            $table->string('name', 100);
+            $table->string('slug', 100)->unique();
+            $table->string('thumbnail', 255);
+            $table->integer('price')->default(0);
+            $table->text('description')->nullable();
+            $table->text('template')->nullable();
             $table->timestamps();
         });
 
-        // Events table
+        Schema::create('invitations', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('theme_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('map_address', 255);
+            $table->date('date_of_event');
+            $table->timestamps();
+
+            $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+
+        Schema::create('brides', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('invitation_id')->unsigned();
+            $table->enum('type', ["putra", "putri"]);
+            $table->string('fullname', 150);
+            $table->string('nickname', 100)->nullable();
+            $table->string('name_of_father', 150)->nullable();
+            $table->string('name_of_mother', 150)->nullable();
+            $table->integer('order')->nullable();
+            $table->timestamps();
+
+            $table->foreign('invitation_id')->references('id')->on('invitations')->onDelete('cascade');
+        });
+
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->date('event_date');
-            $table->unsignedBigInteger('template_id')->nullable();
+            $table->bigInteger('invitation_id')->unsigned();
+            $table->date('date_of_event');
+            $table->time('early_event_time')->nullable();
+            $table->time('final_event_time')->nullable();
+            $table->string('address', 255);
+            $table->enum('type', ["reception", "contract"]);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('invitation_id')->references('id')->on('invitations')->onDelete('cascade');
         });
 
-        // Templates table
-        Schema::create('templates', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string("name", 50);
-            $table->string("slug", 50)->unique();
-            $table->string("description", 100)->nullable();
-            $table->string("thumbnail", 255);
-            $table->unsignedBigInteger('level_required')->default(1); // Free by default
+            $table->bigInteger('invitation_id')->unsigned();
+            $table->string('fullname', 150);
+            $table->text('comments');
             $table->timestamps();
 
-            $table->foreign('level_required')->references('id')->on('subscription_levels');
-        });
-
-        // Payments table
-        Schema::create('payments', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('subscription_level_id');
-            $table->decimal('amount', 8, 2);
-            $table->date('payment_date');
-            $table->date('expiry_date');
-            $table->string('status')->default('pending'); // pending, success, failed
-            $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('subscription_level_id')->references('id')->on('subscription_levels');
+            $table->foreign('invitation_id')->references('id')->on('invitations')->onDelete('cascade');
         });
     }
 
@@ -71,10 +79,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
-        Schema::dropIfExists('templates');
+        Schema::dropIfExists('comments');
         Schema::dropIfExists('events');
-        Schema::dropIfExists('subscription_levels');
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('brides');
+        Schema::dropIfExists('invitations');
+        Schema::dropIfExists('themes');
     }
 };

@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\DashboardMemberController;
 use App\Http\Controllers\LandingController;
 use App\Models\Comments;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, "index"]);
 Route::get('/themes', [LandingController::class, "themes"]);
+Route::get('/member', [DashboardMemberController::class, "index"]);
 
 
 Route::get('/comments', function () {
