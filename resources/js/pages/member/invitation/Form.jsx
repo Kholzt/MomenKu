@@ -46,6 +46,9 @@ const Form = ({
                         className={`flex transition-all   translate-x-[-${
                             activeIndex * 100
                         }%]`}
+                        style={{
+                            transform: `translateX(-${activeIndex * 100}%)`,
+                        }}
                     >
                         <PartnerSection
                             brides={brides}
