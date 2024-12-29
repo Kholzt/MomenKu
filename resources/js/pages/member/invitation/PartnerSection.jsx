@@ -9,7 +9,7 @@ const PartnerSection = ({
     setActiveIndex,
     activeIndex,
     idInvitation,
-    brides,
+    brides = [],
 }) => {
     const { data, setData, post, put, errors } = useForm({
         nama_lengkap_pria: brides[0]?.full_name ?? "",

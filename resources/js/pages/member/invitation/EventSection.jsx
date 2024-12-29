@@ -5,17 +5,17 @@ const EventSection = ({
     setActiveIndex,
     activeIndex,
     idInvitation,
-    events,
+    events = [],
 }) => {
     return (
         <div className={`${activeIndex == 1 ? "" : "h-0"} min-w-full `}>
             <div className="p-6 border-b">
                 <EventForm idInvitation={idInvitation} />
             </div>
-            {events.length == 0 ? (
+            {events?.length == 0 ? (
                 <EmptyEvent></EmptyEvent>
             ) : (
-                events.map((event, index) => {
+                events?.map((event, index) => {
                     return (
                         <>
                             <EventItem key={index} event={event}></EventItem>
