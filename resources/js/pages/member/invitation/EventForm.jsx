@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import Checkbox from "@/components/Checkbox";
+import InputError from "@/components/InputError";
 import InputLabel from "@/components/InputLabel";
 import Modal from "@/components/Modal";
 import TextInput from "@/components/TextInput";
@@ -57,11 +58,7 @@ const EventForm = ({ idInvitation }) => {
                                     setData("judul", e.target.value)
                                 }
                             />
-                            {errors.judul && (
-                                <span className="text-red-500">
-                                    {errors.judul}
-                                </span>
-                            )}
+                            <InputError message={errors.judul} />
                         </div>
 
                         <div>
@@ -78,11 +75,7 @@ const EventForm = ({ idInvitation }) => {
                                     setData("tanggal", e.target.value)
                                 }
                             />
-                            {errors.tanggal && (
-                                <span className="text-red-500">
-                                    {errors.tanggal}
-                                </span>
-                            )}
+                            <InputError message={errors.tanggal} />
                         </div>
 
                         <div>
@@ -99,11 +92,7 @@ const EventForm = ({ idInvitation }) => {
                                     setData("jam_mulai", e.target.value)
                                 }
                             />
-                            {errors.jam_mulai && (
-                                <span className="text-red-500">
-                                    {errors.jam_mulai}
-                                </span>
-                            )}
+                            <InputError message={errors.jam_mulai} />
                         </div>
 
                         <div>
@@ -121,11 +110,8 @@ const EventForm = ({ idInvitation }) => {
                                 }
                                 disabled={data.jam_sampai_selesai}
                             />
-                            {errors.jam_selesai && (
-                                <span className="text-red-500">
-                                    {errors.jam_selesai}
-                                </span>
-                            )}
+                            <InputError message={errors.jam_selesai} />
+
                             <label className="mt-2 inline-block select-none">
                                 <Checkbox
                                     name="jam_sampai_selesai"
@@ -157,11 +143,7 @@ const EventForm = ({ idInvitation }) => {
                                     setData("alamat", e.target.value)
                                 }
                             ></textarea>
-                            {errors.alamat && (
-                                <span className="text-red-500">
-                                    {errors.alamat}
-                                </span>
-                            )}
+                            <InputError message={errors.alamat} />
                         </div>
 
                         <div className="col-span-2 flex justify-between">

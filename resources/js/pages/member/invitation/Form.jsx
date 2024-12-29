@@ -73,7 +73,7 @@ export default Form;
 
 function StepsForm({ activeIndex }) {
     return (
-        <ul className="grid grid-cols-3 gap-2 ">
+        <ul className="md:grid md:grid-cols-3 flex justify-center  gap-2 ">
             <li className="flex items-center justify-center">
                 <span
                     className={`me-2 ${
@@ -84,7 +84,13 @@ function StepsForm({ activeIndex }) {
                 >
                     1
                 </span>
-                <span className="text-white text-lg">Mempelai</span>
+                <span
+                    className={`text-white text-lg md:inline-block ${
+                        activeIndex == 0 ? "inline-block" : "hidden"
+                    }`}
+                >
+                    Mempelai
+                </span>
             </li>
             <li className="flex items-center justify-center">
                 <span
@@ -96,7 +102,13 @@ function StepsForm({ activeIndex }) {
                 >
                     2
                 </span>
-                <span className="text-white text-lg">Acara</span>
+                <span
+                    className={`text-white text-lg md:inline-block ${
+                        activeIndex == 1 ? "inline-block" : "hidden"
+                    }`}
+                >
+                    Acara
+                </span>
             </li>
             <li className="flex items-center justify-center">
                 <span
@@ -108,7 +120,13 @@ function StepsForm({ activeIndex }) {
                 >
                     3
                 </span>
-                <span className="text-white text-lg">Lainnya</span>
+                <span
+                    className={`text-white text-lg md:inline-block ${
+                        activeIndex == 2 ? "inline-block" : "hidden"
+                    }`}
+                >
+                    Lainnya
+                </span>
             </li>
         </ul>
     );
