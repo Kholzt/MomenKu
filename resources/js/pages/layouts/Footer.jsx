@@ -1,12 +1,11 @@
 import { Link } from "@inertiajs/react";
-import React from "react";
 
 const Footer = () => {
     return (
         <footer className="bg-[--primary-color]">
             <div className="container">
                 <div className="flex justify-between flex-wrap gap-10">
-                    <div className="w-[400px] max-w-full">
+                    <div className="w-[400px]  max-w-full">
                         <h1 className="text-xl font-bold mb-2 text-white">
                             MomenKu
                         </h1>
@@ -16,7 +15,7 @@ const Footer = () => {
                             dengan beberapa klik!
                         </p>
                     </div>
-                    <div className="flex flex-wrap gap-10">
+                    <div className="flex flex-wrap gap-24">
                         <div className="flex-1">
                             <h6 className="text-md font-medium text-white mb-2">
                                 Navigasi

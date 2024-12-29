@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\InvitationsModel;
 
 class DashboardMemberController extends Controller
 {
     public function index()
     {
-        //testing
-        return inertia("member/Dashboard");
+        $invitations = InvitationsModel::where("user_id", auth()->user()->id)->orderBy("id", "desc")->get();
+        $params["data"] = (object)[
+            "invitations" => $invitations
+        ];
+        return inertia("member/Dashboard", $params);
     }
 }

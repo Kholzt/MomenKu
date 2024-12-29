@@ -8,7 +8,7 @@ class BridesModel extends Model
 {
 
     protected $table = "brides";
-    protected $fillable = ["invitation_id", "fullname", "type", "nickname", "name_of_father", "name_of_mother", "order"];
+    protected $fillable = ["invitation_id", "full_name", "type", "nickname", "father_name", "mother_name", "order"];
 
 
     public function invitations()

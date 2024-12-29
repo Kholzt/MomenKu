@@ -1,12 +1,10 @@
-import React from "react";
-import Sidebar from "./Sidebar";
 import NavbarDashboard from "./NavbarDashboard";
 
 const DashboardLayout = ({ children }) => {
     return (
         <div className="flex w-full ">
             {/* Sidebar */}
-            <Sidebar />
+            {/* <Sidebar /> */}
 
             {/* Main Content */}
             <main className="flex-grow bg-gray-100">

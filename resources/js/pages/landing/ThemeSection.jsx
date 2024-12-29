@@ -1,7 +1,5 @@
 import { Link } from "@inertiajs/react";
-import React from "react";
 import ThemeCard from "../../components/ThemeCard";
-import Button from "../../components/Button";
 
 const ThemeSection = ({ themes }) => {
     return (

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class EventsModel extends Model
 {
     protected $table = "events";
-    protected $fillable = ["invitation_id", "date_of_event", "early_event_time", "final_event_time", "address", "type"];
+    protected $fillable = ["invitation_id", "event_name", "event_date", "start_time", "end_time", "address", "is_primary"];
 
 
     public function invitations()

@@ -1,10 +1,11 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
 import Button from "../../components/Button";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [active, setActive] = useState(false);
+    const user = usePage().props.auth.user;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -17,17 +18,18 @@ const Navbar = () => {
 
     return (
         <>
-            <NavbarWeb scrolled={scrolled} />
+            <NavbarWeb scrolled={scrolled} user={user} />
             <NavbarMobile
                 scrolled={scrolled}
                 active={active}
                 setActive={setActive}
+                user={user}
             />
         </>
     );
 };
 
-const NavbarMobile = ({ scrolled, active, setActive }) => {
+const NavbarMobile = ({ scrolled, active, setActive, user }) => {
     const baseClass =
         "fixed md:hidden z-10 transition-all duration-300 ease-in-out px-4";
     const scrolledClass = scrolled
@@ -44,7 +46,7 @@ const NavbarMobile = ({ scrolled, active, setActive }) => {
             }`}
         >
             <div className="container flex flex-wrap justify-between">
-                <Link className="text-sm" href="/">
+                <Link className="text-sm" href={route("landing")}>
                     MOMENKU
                 </Link>
                 <button onClick={() => setActive(!active)}>
@@ -53,12 +55,15 @@ const NavbarMobile = ({ scrolled, active, setActive }) => {
                 <nav className={`w-full pt-6 ${active ? "block" : "hidden"}`}>
                     <ul className="flex flex-col gap-6">
                         <li>
-                            <Link className="text-sm" href="/">
+                            <Link className="text-sm" href={route("landing")}>
                                 Beranda
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" href="/themes">
+                            <Link
+                                className="text-sm"
+                                href={route("landing.themes")}
+                            >
                                 Tema
                             </Link>
                         </li>
@@ -68,19 +73,33 @@ const NavbarMobile = ({ scrolled, active, setActive }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" href="/FAQ">
+                            <Link
+                                className="text-sm"
+                                href={route("landing.faq")}
+                            >
                                 FAQ
                             </Link>
                         </li>
                         <li>
-                            <Button
-                                type="link"
-                                className="text-sm w-full block"
-                                href="/login"
-                            >
-                                <i className="fa-solid fa-arrow-right-to-bracket me-2"></i>
-                                Login
-                            </Button>
+                            {user ? (
+                                <Button
+                                    type="link"
+                                    className="text-sm w-full block"
+                                    href={route("dashboard")}
+                                >
+                                    <i className="fa-solid fa-arrow-right-to-bracket me-2"></i>
+                                    Dashboard
+                                </Button>
+                            ) : (
+                                <Button
+                                    type="link"
+                                    className="text-sm w-full block"
+                                    href={route("login")}
+                                >
+                                    <i className="fa-solid fa-arrow-right-to-bracket me-2"></i>
+                                    Login
+                                </Button>
+                            )}
                         </li>
                     </ul>
                 </nav>
@@ -89,7 +108,7 @@ const NavbarMobile = ({ scrolled, active, setActive }) => {
     );
 };
 
-const NavbarWeb = ({ scrolled }) => {
+const NavbarWeb = ({ scrolled, user }) => {
     const baseClass =
         "fixed hidden md:block top-0 z-10 transition-all duration-300 ease-in-out px-4 w-full";
     const scrolledClass = scrolled
@@ -99,18 +118,21 @@ const NavbarWeb = ({ scrolled }) => {
     return (
         <header className={`${baseClass} ${scrolledClass}`}>
             <div className="container flex justify-between">
-                <Link className="text-sm" href="/">
+                <Link className="text-sm" href={route("landing")}>
                     MOMENKU
                 </Link>
                 <nav>
                     <ul className="flex gap-10">
                         <li>
-                            <Link className="text-sm" href="/">
+                            <Link className="text-sm" href={route("landing")}>
                                 Beranda
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" href="/themes">
+                            <Link
+                                className="text-sm"
+                                href={route("landing.themes")}
+                            >
                                 Tema
                             </Link>
                         </li>
@@ -120,16 +142,26 @@ const NavbarWeb = ({ scrolled }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-sm" href="/FAQ">
+                            <Link
+                                className="text-sm"
+                                href={route("landing.faq")}
+                            >
                                 FAQ
                             </Link>
                         </li>
                     </ul>
                 </nav>
-                <Link className="text-sm" href="/login">
-                    <i className="fa-solid fa-arrow-right-to-bracket me-2"></i>
-                    Login
-                </Link>
+                {user ? (
+                    <Link className="text-sm" href={route("dashboard")}>
+                        <i className="fa-solid fa-home me-2"></i>
+                        Dashboard
+                    </Link>
+                ) : (
+                    <Link className="text-sm " href={route("login")}>
+                        <i className="fa-solid fa-arrow-right-to-bracket me-2"></i>
+                        Login
+                    </Link>
+                )}
             </div>
         </header>
     );

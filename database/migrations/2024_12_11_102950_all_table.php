@@ -11,6 +11,13 @@ return new class extends Migration
     {
 
 
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 100);
+            $table->string('slug', 100)->unique();
+            $table->timestamps();
+        });
+
         Schema::create('themes', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
@@ -19,15 +26,16 @@ return new class extends Migration
             $table->integer('price')->default(0);
             $table->text('description')->nullable();
             $table->text('template')->nullable();
+            $table->unsignedBigInteger('category_id');
+
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
 
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('theme_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
-            $table->string('map_address', 255);
-            $table->date('date_of_event');
+            $table->unsignedBigInteger('theme_id')->default(1);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade');
@@ -36,13 +44,12 @@ return new class extends Migration
 
         Schema::create('brides', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('invitation_id')->unsigned();
-            $table->enum('type', ["putra", "putri"]);
-            $table->string('fullname', 150);
+            $table->unsignedBigInteger('invitation_id');
+            $table->string('full_name', 150);
             $table->string('nickname', 100)->nullable();
-            $table->string('name_of_father', 150)->nullable();
-            $table->string('name_of_mother', 150)->nullable();
-            $table->integer('order')->nullable();
+            $table->string('father_name', 150)->nullable();
+            $table->string('mother_name', 150)->nullable();
+            $table->integer('order');
             $table->timestamps();
 
             $table->foreign('invitation_id')->references('id')->on('invitations')->onDelete('cascade');
@@ -50,12 +57,13 @@ return new class extends Migration
 
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('invitation_id')->unsigned();
-            $table->date('date_of_event');
-            $table->time('early_event_time')->nullable();
-            $table->time('final_event_time')->nullable();
+            $table->unsignedBigInteger('invitation_id');
+            $table->string('event_name', 255);
+            $table->date('event_date');
+            $table->time('start_time');
+            $table->time('end_time')->nullable();
             $table->string('address', 255);
-            $table->enum('type', ["reception", "contract"]);
+            $table->boolean('is_primary')->default(false);
             $table->timestamps();
 
             $table->foreign('invitation_id')->references('id')->on('invitations')->onDelete('cascade');
@@ -63,9 +71,9 @@ return new class extends Migration
 
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('invitation_id')->unsigned();
-            $table->string('fullname', 150);
-            $table->text('comments');
+            $table->unsignedBigInteger('invitation_id');
+            $table->string('full_name', 150);
+            $table->text('content');
             $table->timestamps();
 
             $table->foreign('invitation_id')->references('id')->on('invitations')->onDelete('cascade');

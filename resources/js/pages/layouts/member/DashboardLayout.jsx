@@ -1,17 +1,17 @@
-import React from "react";
-import Sidebar from "./Sidebar";
 import NavbarDashboard from "./NavbarDashboard";
 
 const DashboardLayout = ({ children }) => {
     return (
-        <div className="flex w-full ">
+        <div className="flex justify-center w-full">
             {/* Sidebar */}
-            <Sidebar />
+            {/* <Sidebar /> */}
 
             {/* Main Content */}
-            <main className="flex-grow bg-gray-100">
+            <main className="bg-[--primary-light] min-h-screen w-full">
                 <NavbarDashboard />
-                <div className="p-4">{children}</div>
+                <div className="p-4 w-[900px] mx-auto max-w-full">
+                    {children}
+                </div>
             </main>
         </div>
     );

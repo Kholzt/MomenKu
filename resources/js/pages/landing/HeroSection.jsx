@@ -1,8 +1,10 @@
 import React from "react";
 import Button from "../../components/Button";
 import SliderHeroSection from "./SliderHeroSection";
+import { usePage } from "@inertiajs/react";
 
 const HeroSection = () => {
+    const user = usePage().props?.auth?.user;
     return (
         <section className="min-h-screen flex items-center bg-[--primary-color] text-white">
             <div className="container grid md:grid-cols-2 grid-cols-1 md:gap-10 gap-5 px-6">
@@ -18,7 +20,11 @@ const HeroSection = () => {
                     <div className="flex gap-2 md:justify-start justify-center">
                         <Button
                             type="link"
-                            href={"/register"}
+                            href={
+                                user
+                                    ? route("invitation.create")
+                                    : route("register")
+                            }
                             variant={"secondary"}
                         >
                             <i className="fa fa-plus-circle"></i> Buat Undangan

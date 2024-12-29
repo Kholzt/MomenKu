@@ -18,7 +18,11 @@ const Button = ({
         );
     }
     return (
-        <button {...props} className={`${buttonClass} ${props.className}`}>
+        <button
+            {...props}
+            type={type}
+            className={`${buttonClass} ${props.className}`}
+        >
             {children}
         </button>
     );
@@ -32,13 +36,21 @@ function getVariant(variant) {
             classVal =
                 "hover:shadow-[--primary-color]/50  bg-[--primary-color] text-white";
             break;
+        case "primary-outline":
+            classVal =
+                "hover:shadow-[--primary-color]/50  border-[--primary-color] border ";
+            break;
+        case "danger":
+            classVal =
+                "hover:shadow-[--danger-color]/50  bg-[--danger-color] text-white";
+            break;
+        case "danger-outline":
+            classVal =
+                "hover:shadow-[--danger-color]/50  border-[--danger-color] border ";
+            break;
         case "secondary":
             classVal =
                 "hover:shadow-[--secondary-color]/50  bg-[--secondary-color] text-white";
-            break;
-        case "primary-outline":
-            classVal =
-                "hover:shadow-[--primary-color]/50  border-[--primary-color] border text-white";
             break;
         case "secondary-outline":
             classVal =
