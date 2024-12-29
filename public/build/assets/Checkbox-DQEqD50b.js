@@ -1,1 +1,0 @@
-import{j as s}from"./app-1OhpThaq.js";function c({className:r="",...o}){return s.jsx("input",{...o,type:"checkbox",className:"rounded border-gray-300 text-[--primary-color] shadow-sm focus:ring-[--primary-color]   dark:focus:ring-[--primary-color] "+r})}export{c as C};
