@@ -1,0 +1,1 @@
+import{j as m}from"./app-B6R-igfu.js";function o({value:t,className:e="",children:r,...s}){return m.jsx("label",{...s,className:"block text-sm font-medium text-gray-800  "+e,children:t||r})}export{o as I};

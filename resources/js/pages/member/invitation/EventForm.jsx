@@ -6,20 +6,25 @@ import Modal from "@/components/Modal";
 import TextInput from "@/components/TextInput";
 import { Switch } from "@headlessui/react";
 import { useForm } from "@inertiajs/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const EventForm = ({ idInvitation }) => {
-    const [show, setShow] = useState(false);
+const EventForm = ({
+    idInvitation,
+    event,
+    setEvent,
+    show = false,
+    setShow,
+}) => {
     const [enabled, setEnabled] = useState(false);
 
-    const { data, setData, post, processing, errors } = useForm({
+    const { data, setData, post, processing, errors, reset } = useForm({
         judul: "",
         tanggal: new Date().toISOString().split("T")[0],
         jam_mulai: "09:00",
         jam_selesai: "12:00",
         jam_sampai_selesai: false,
         alamat: "",
-        acara_utama: false,
+        acara_utama: "",
     });
 
     const handleSubmit = (e) => {
@@ -29,11 +34,30 @@ const EventForm = ({ idInvitation }) => {
         });
     };
 
+    useEffect(() => {
+        if (event) {
+            reset();
+            setData({
+                judul: event?.event_name,
+                tanggal: event?.event_date,
+                jam_mulai: event?.start_time,
+                jam_selesai: event?.end_time,
+                jam_sampai_selesai: event ? !event.end_time : false,
+                alamat: event?.address,
+                acara_utama: event?.is_primary,
+            });
+        }
+    }, [event]);
+
     return (
         <div className="flex items-center">
             <h1 className=" font-bold text-xl">Acara</h1>
             <Button
-                onClick={() => setShow(true)}
+                onClick={() => {
+                    setEvent({});
+                    reset();
+                    setShow(true);
+                }}
                 type="button"
                 variant="primary"
                 className="ms-auto"
@@ -160,7 +184,7 @@ const EventForm = ({ idInvitation }) => {
                             </div>
 
                             <Switch
-                                checked={data.acara_utama}
+                                checked={!!data.acara_utama}
                                 onChange={(value) =>
                                     setData("acara_utama", value)
                                 }

@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import EventForm from "./EventForm";
+import { useState } from "react";
 
 const EventSection = ({
     setActiveIndex,
@@ -7,20 +8,33 @@ const EventSection = ({
     idInvitation,
     events = [],
 }) => {
+    const [event, setEvent] = useState({});
+    const [showModal, setShowModal] = useState(false);
+
     return (
         <div className={`${activeIndex == 1 ? "" : "h-0"} min-w-full `}>
             <div className="p-6 border-b">
-                <EventForm idInvitation={idInvitation} />
+                <EventForm
+                    show={showModal}
+                    setShow={setShowModal}
+                    event={event}
+                    setEvent={setEvent}
+                    idInvitation={idInvitation}
+                />
             </div>
             {events?.length == 0 ? (
                 <EmptyEvent></EmptyEvent>
             ) : (
                 events?.map((event, index) => {
                     return (
-                        <>
-                            <EventItem key={index} event={event}></EventItem>
+                        <div key={index}>
+                            <EventItem
+                                setShowModal={setShowModal}
+                                setEvent={setEvent}
+                                event={event}
+                            ></EventItem>
                             <hr />
-                        </>
+                        </div>
                     );
                 })
             )}
@@ -78,7 +92,7 @@ function EventItem(props) {
                         ""
                     )}
                 </h3>
-                <div className=" grid grid-cols-6  flex-1 md:gap-3 gap-2">
+                <div className=" grid grid-cols-6 w-full flex-1 md:gap-3 gap-2">
                     <div className="md:col-span-2 col-span-6">
                         <p className="text-slate-600 text-sm">
                             <i className="fa fa-map me-2"></i>
@@ -108,7 +122,13 @@ function EventItem(props) {
                 >
                     <i className="fa fa-trash text-sm"></i>
                 </Button>
-                <Button type="button">
+                <Button
+                    onClick={() => {
+                        props.setEvent(props.event);
+                        props.setShowModal(true);
+                    }}
+                    type="button"
+                >
                     <i className="fa fa-pencil text-sm"></i>
                 </Button>
             </div>
