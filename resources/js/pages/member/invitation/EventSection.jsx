@@ -66,7 +66,7 @@ function EmptyEvent() {
 
 function EventItem(props) {
     return (
-        <div className="px-6 py-4 flex justify-between items-center">
+        <div className="px-6 py-4 md:flex-row flex-col flex justify-between items-center">
             <div className="">
                 <h3 className="text-xl font-medium mb-2">
                     {props.event.event_name}{" "}
