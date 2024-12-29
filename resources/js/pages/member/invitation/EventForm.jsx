@@ -43,7 +43,7 @@ const EventForm = ({ idInvitation }) => {
             <Modal show={show} closeable onClose={() => setShow(false)}>
                 <form onSubmit={handleSubmit}>
                     <div className="grid md:grid-cols-2 mb-4 gap-6 p-6">
-                        <div>
+                        <div className="md:col-span-1 col-span-2">
                             <InputLabel htmlFor="judul" className=" mb-2">
                                 Judul
                             </InputLabel>
@@ -61,7 +61,7 @@ const EventForm = ({ idInvitation }) => {
                             <InputError message={errors.judul} />
                         </div>
 
-                        <div>
+                        <div className="md:col-span-1 col-span-2">
                             <InputLabel htmlFor="tanggal" className=" mb-2">
                                 Tanggal
                             </InputLabel>
@@ -78,7 +78,7 @@ const EventForm = ({ idInvitation }) => {
                             <InputError message={errors.tanggal} />
                         </div>
 
-                        <div>
+                        <div className="md:col-span-1 col-span-2">
                             <InputLabel htmlFor="jam_mulai" className=" mb-2">
                                 Jam Mulai
                             </InputLabel>
@@ -95,7 +95,7 @@ const EventForm = ({ idInvitation }) => {
                             <InputError message={errors.jam_mulai} />
                         </div>
 
-                        <div>
+                        <div className="md:col-span-1 col-span-2">
                             <InputLabel htmlFor="jam_selesai" className=" mb-2">
                                 Jam Selesai
                             </InputLabel>
@@ -171,7 +171,7 @@ const EventForm = ({ idInvitation }) => {
                         </div>
                     </div>
 
-                    <div className="p-6 border-t flex gap-2 justify-end">
+                    <div className="p-6 border-t flex md:flex-row flex-col gap-2 md:justify-end">
                         <Button
                             onClick={() => setShow(false)}
                             type="button"
