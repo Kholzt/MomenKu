@@ -11,7 +11,7 @@ const PartnerSection = ({
     idInvitation,
     brides = [],
 }) => {
-    const { data, setData, post, put, errors } = useForm({
+    const { data, setData, post, put, errors, processing } = useForm({
         nama_lengkap_pria: brides[0]?.full_name ?? "",
         nama_panggilan_pria: brides[0]?.nickname ?? "",
         nama_ayah_pria: brides[0]?.father_name ?? "",
@@ -28,13 +28,13 @@ const PartnerSection = ({
 
         if (isDirtyForm) {
             if (!idInvitation) {
-                post("/new-invitation/brides", {
+                post(route("invitation.storeBride"), {
                     onSuccess: (e) => {
                         setActiveIndex(1);
                     },
                 });
             } else {
-                put("/new-invitation/brides/" + idInvitation, {
+                put(route("invitation.updateBride", idInvitation), {
                     onSuccess: (e) => {
                         setActiveIndex(1);
                     },
@@ -225,9 +225,17 @@ const PartnerSection = ({
                     <Button
                         type="submit"
                         variant="primary"
-                        className="md:ms-auto"
+                        disabled={processing}
+                        className={`md:ms-auto ${processing && "opacity-50"}`}
                     >
-                        Lanjut <i className="fa fa-arrow-right"></i>
+                        {processing ? (
+                            "Loading..."
+                        ) : (
+                            <>
+                                Lanjut
+                                <i className="fa fa-arrow-right"></i>
+                            </>
+                        )}
                     </Button>
                 </div>
             </form>

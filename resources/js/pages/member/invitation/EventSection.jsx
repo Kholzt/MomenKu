@@ -1,6 +1,8 @@
 import Button from "@/components/Button";
 import EventForm from "./EventForm";
 import { useState } from "react";
+import Modal from "@/components/Modal";
+import { useForm } from "@inertiajs/react";
 
 const EventSection = ({
     setActiveIndex,
@@ -49,7 +51,7 @@ const EventSection = ({
                     <i className="fa fa-arrow-left"></i> Kembali
                 </Button>
                 <Button
-                    onClick={() => setActiveIndex(1)}
+                    onClick={() => setActiveIndex(2)}
                     type="button"
                     variant="primary"
                     className="md:ms-auto"
@@ -79,6 +81,12 @@ function EmptyEvent() {
 }
 
 function EventItem(props) {
+    const [show, setShow] = useState(false);
+    const { delete: deleteMethod } = useForm();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        deleteMethod(route("invitation.deleteEvent", props.event.id));
+    };
     return (
         <div className="px-6 py-4 md:flex-row flex-col flex md:justify-between gap-4 md:items-center">
             <div className="">
@@ -116,6 +124,7 @@ function EventItem(props) {
             </div>
             <div className="flex gap-2">
                 <Button
+                    onClick={() => setShow(true)}
                     type="button"
                     variant="danger-outline"
                     className="text-red-500"
@@ -132,6 +141,42 @@ function EventItem(props) {
                     <i className="fa fa-pencil text-sm"></i>
                 </Button>
             </div>
+
+            <Modal
+                maxWidth="lg"
+                onClose={() => setShow(false)}
+                show={show}
+                closeable
+            >
+                <form onSubmit={handleSubmit}>
+                    <div className="p-6">
+                        <h1 className="text-2xl font-bold mb-2">
+                            Pemberitahuan
+                        </h1>
+                        <h6 className="text-lg font-medium">
+                            Apakah anda yakin menghapus acara{" "}
+                            {props.event.event_name}?
+                        </h6>
+                        <p className="text-slate-600">
+                            Tindakan ini akan menghapus data acara secara
+                            permanen
+                        </p>
+                    </div>
+                    <div className="px-6 pb-6 flex gap-2 md:flex-row flex-col md:justify-end">
+                        <Button
+                            onClick={() => setShow(false)}
+                            type="button"
+                            variant="primary-outline"
+                            className="text-[--primary-color]"
+                        >
+                            Batal
+                        </Button>
+                        <Button type="submit" variant="danger">
+                            Hapus
+                        </Button>
+                    </div>
+                </form>
+            </Modal>
         </div>
     );
 }

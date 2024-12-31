@@ -28,7 +28,7 @@ const SliderHeroSection = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % themes.length);
-        }, 3000); // Change every 3 seconds
+        }, 5000);
 
         return () => clearInterval(interval); // Cleanup on component unmount
     }, [themes.length]);
@@ -39,7 +39,7 @@ const SliderHeroSection = () => {
                 {themes.map((theme, index) => (
                     <div
                         key={index}
-                        className={`absolute -top-10 left-1/2 transform transition-all duration-1000 ease-in-out  ${
+                        className={`absolute -top-10 text-black left-1/2 transform transition-all duration-1000 ease-in-out  ${
                             index === currentIndex
                                 ? "-translate-x-1/2 z-[2] scale-y-110 opacity-100"
                                 : index === (currentIndex + 1) % themes.length

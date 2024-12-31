@@ -18,8 +18,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/new-invitation/{id}', [InvitationController::class, "edit"])->name('invitation.edit');
     Route::post('/new-invitation/brides', [InvitationController::class, "storeBride"])->name('invitation.storeBride');
     Route::put('/new-invitation/brides/{id}', [InvitationController::class, "updateBride"])->name('invitation.updateBride');
-    Route::post('/new-invitation/events/{id}', [InvitationController::class, "storeEvent"])->name('invitation.storeEvent');
-    Route::put('/new-invitation/events/{id}', [InvitationController::class, "updateEvent"])->name('invitation.updateEvent');
+    Route::put('/new-invitation/other/{idInvitation}', [InvitationController::class, "updateOther"])->name('invitation.updateOther');
+    Route::post('/new-invitation/events/{idInvitation}', [InvitationController::class, "storeEvent"])->name('invitation.storeEvent');
+    Route::put('/new-invitation/events/{idEvent}', [InvitationController::class, "updateEvent"])->name('invitation.updateEvent');
+    Route::delete('/new-invitation/events/{idEvent}', [InvitationController::class, "deleteEvent"])->name('invitation.deleteEvent');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -28,4 +30,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/member/profile', [ProfileController::class, 'destroyMember'])->name('profile.destroyMember');
 });
 
+
 require __DIR__ . '/auth.php';
+Route::get('/{slug}', [InvitationController::class, "show"])->name('invitation.show');

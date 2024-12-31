@@ -27,6 +27,8 @@ export default function Register() {
             <Head title="Register" />
 
             <form onSubmit={submit}>
+                <h1 className="text-xl font-medium mb-1">Register</h1>
+                <p className="mb-2">Silahkan isi semua form untuk registrasi</p>
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
 

@@ -3,31 +3,39 @@ import { Head } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
 import PartnerSection from "./PartnerSection";
 import EventSection from "./EventSection";
+import Modal from "@/components/Modal";
+import Button from "@/components/Button";
+import OtherSection from "./OtherSection";
 
 const Form = ({
     activeIndex: currentActiveIndex = 0,
     brides,
     events,
+    themes,
+    theme_id,
     idInvitation = null,
 }) => {
     const [activeIndex, setActiveIndex] = useState(currentActiveIndex);
+    const [show, setShow] = useState(false);
     useEffect(() => {
-        const handleLinkClick = (e) => {
-            const target = e.target;
-            if (target.tagName === "A") {
-                e.preventDefault();
-            }
-        };
+        const anchors = document.querySelectorAll("a");
 
-        // Menambahkan event listener global untuk klik pada semua anchor
-        document.addEventListener("click", handleLinkClick);
+        anchors.forEach((anchor) => {
+            anchor.addEventListener("click", (event) => {
+                event.preventDefault();
+                setShow(true);
+            });
+        });
 
-        // Cleanup event listener saat komponen unmount
-        return () => {
-            document.removeEventListener("click", handleLinkClick);
-        };
+        return () =>
+            anchors.forEach((anchor) => {
+                anchor.removeEventListener("click", () => {});
+            });
     }, []);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
     return (
         <Layout>
             <Head title="Buat undangan" />
@@ -62,9 +70,50 @@ const Form = ({
                             activeIndex={activeIndex}
                             setActiveIndex={setActiveIndex}
                         />
+                        <OtherSection
+                            themes={themes}
+                            themeId={theme_id}
+                            idInvitation={idInvitation}
+                            activeIndex={activeIndex}
+                            setActiveIndex={setActiveIndex}
+                        />
                     </div>
                 </div>
             </div>
+
+            <Modal
+                maxWidth="lg"
+                onClose={() => setShow(false)}
+                show={show}
+                closeable
+            >
+                <form onSubmit={handleSubmit}>
+                    <div className="p-6">
+                        <h1 className="text-2xl font-bold mb-2">
+                            Pemberitahuan
+                        </h1>
+                        <h6 className="text-lg font-medium">
+                            Apakah anda yakin menginggalkan halaman ?
+                        </h6>
+                        <p className="text-slate-600">
+                            Tindakan ini akan menghapus data undangan anda
+                        </p>
+                    </div>
+                    <div className="px-6 pb-6 flex gap-2 md:flex-row flex-col md:justify-end">
+                        <Button
+                            onClick={() => setShow(false)}
+                            type="button"
+                            variant="primary-outline"
+                            className="text-[--primary-color]"
+                        >
+                            Batal
+                        </Button>
+                        <Button type="submit" variant="danger">
+                            Oke
+                        </Button>
+                    </div>
+                </form>
+            </Modal>
         </Layout>
     );
 };

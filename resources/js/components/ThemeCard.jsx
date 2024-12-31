@@ -1,6 +1,7 @@
 import { Link } from "@inertiajs/react";
 import React from "react";
 import { currencyFormat } from "../helpers/helpers";
+import Button from "./Button";
 
 const ThemeCard = ({ theme }) => {
     return (
@@ -24,6 +25,14 @@ const ThemeCard = ({ theme }) => {
                     {theme.name}
                 </h3>
                 <p className="text-sm text-slate-600">{theme.description}</p>
+                <div className="grid md:grid-cols-2 mt-4 grid-cols-1 gap-2">
+                    <Button type="link" variant="primary-outline">
+                        Preview
+                    </Button>
+                    <Button type="link" variant="primary">
+                        Gunakan
+                    </Button>
+                </div>
             </div>
         </article>
     );

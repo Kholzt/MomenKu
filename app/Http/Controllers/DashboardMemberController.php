@@ -8,7 +8,10 @@ class DashboardMemberController extends Controller
 {
     public function index()
     {
-        $invitations = InvitationsModel::where("user_id", auth()->user()->id)->orderBy("id", "desc")->get();
+        $invitations = InvitationsModel::where("user_id", auth()->user()->id)
+            ->with(["brides", "theme", "events"])
+            ->orderBy("id", "desc")
+            ->get();
         $params["data"] = (object)[
             "invitations" => $invitations
         ];

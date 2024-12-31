@@ -33,6 +33,8 @@ export default function Login({ status, canResetPassword }) {
             )}
 
             <form onSubmit={submit}>
+                <h1 className="text-xl font-medium mb-1">Login</h1>
+                <p className="mb-2">Silahkan masukkan akun untuk melanjutkan</p>
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 

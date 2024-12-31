@@ -17,7 +17,7 @@ const EventForm = ({
 }) => {
     const [enabled, setEnabled] = useState(false);
 
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, errors, reset, put } = useForm({
         judul: "",
         tanggal: new Date().toISOString().split("T")[0],
         jam_mulai: "09:00",
@@ -29,19 +29,28 @@ const EventForm = ({
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("invitation.storeEvent", idInvitation), {
-            onSuccess: () => setShow(false),
-        });
+        console.log(data);
+
+        if (Object.keys(event).length === 0) {
+            post(route("invitation.storeEvent", idInvitation), {
+                onSuccess: () => setShow(false),
+                onError: (e) => console.log(e),
+            });
+        } else {
+            put(route("invitation.updateEvent", event.id), {
+                onSuccess: () => setShow(false),
+            });
+        }
     };
 
     useEffect(() => {
-        if (event) {
+        if (Object.keys(event).length != 0) {
             reset();
             setData({
                 judul: event?.event_name,
                 tanggal: event?.event_date,
-                jam_mulai: event?.start_time,
-                jam_selesai: event?.end_time,
+                jam_mulai: event?.start_time?.split(":").slice(0, 2).join(":"),
+                jam_selesai: event?.end_time?.split(":").slice(0, 2).join(":"),
                 jam_sampai_selesai: event ? !event.end_time : false,
                 alamat: event?.address,
                 acara_utama: event?.is_primary,
@@ -207,6 +216,7 @@ const EventForm = ({
                             type="submit"
                             variant="primary"
                             disabled={processing}
+                            className={`${processing && "opacity-50"}`}
                         >
                             {processing ? "Loading..." : "Tambah"}
                         </Button>
